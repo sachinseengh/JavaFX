@@ -35,19 +35,31 @@ public class FXMLController implements Initializable {
        myListView.getItems().addAll(food);
        
        
-       myListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>(){
-           @Override
-           public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-             currentValue= (String) myListView.getSelectionModel().getSelectedItem();
-             
-             myLabel.setText(currentValue);
-           }
-           
+//       myListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>(){
+//           @Override
+//           public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+//             currentValue= (String) myListView.getSelectionModel().getSelectedItem();
+//             
+//             myLabel.setText(currentValue);
+//           }
+//           
+//       
+//       
+//       
+//       
+//       });
+
+     myListView.getSelectionModel().selectedItemProperty().addListener((observerable,oldValue,newValue)->{
        
        
-       
+        if(newValue != null){
+           updateLabel((String) newValue);}
        
        });
-    }    
+    }
+
+     private void updateLabel(String newValue) {
+        myLabel.setText(newValue);
+    } 
     
 }
